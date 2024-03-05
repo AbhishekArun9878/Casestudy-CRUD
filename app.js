@@ -11,13 +11,13 @@ app.use(express.static(path.join(__dirname, '/dist/FrontEnd')));
 
 // Task2: create mongoDB connection
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URL, {})
-    .then(() => {
-        console.log('Connected to MongoDB Atlas');
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB Atlas:', error.message);
-    });
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error.message);
+  });
 
 // Task 2: write api with error handling and appropriate api mentioned in the TODO below
 
