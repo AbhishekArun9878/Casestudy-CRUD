@@ -4,7 +4,6 @@ const app = express();
 const dotenv = require('dotenv').config();
 const employeeData = require('./model/employeeData');
 
-// Express Middleware
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '/dist/FrontEnd')));
