@@ -2,7 +2,19 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
-const employeeData = require('./model/employeeData');
+
+// EmployeeData Model 
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const employeeSchema = new Schema({
+  name: String,
+  location: String,
+  position: String,
+  salary: Number,
+}, { versionKey: false });
+
+const employeeData = mongoose.model('employees', employeeSchema);
+module.exports = employeeData;
 
 //Express Middleware
 app.use(express.json());
@@ -10,8 +22,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/dist/FrontEnd')));
 
 // Task2: create mongoDB connection
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect("mongodb+srv://abhishekarun988:ST9xZq4D1CO1bQHm@cluster0.efml9sn.mongodb.net/EmployeeDB?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log('Connected to MongoDB Atlas');
   })
