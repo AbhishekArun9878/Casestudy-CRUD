@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv').config();
 
 // EmployeeData Model 
 const mongoose = require('mongoose');
@@ -14,7 +13,6 @@ const employeeSchema = new Schema({
 }, { versionKey: false });
 
 const employeeData = mongoose.model('employees', employeeSchema);
-module.exports = employeeData;
 
 //Express Middleware
 app.use(express.json());
